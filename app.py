@@ -47,14 +47,26 @@ def load_data():
         df = pd.read_csv(DATA_FILE)
         print(f"資料檔案 {DATA_FILE} 已成功讀取，共 {len(df)} 筆資料。")
 
+
 @app.route("/callback", methods=["GET", "POST"])
 def callback():
     if request.method == "GET":
         return "👋 Hello from LINE bot webhook."
 
-    @app.route("/")
+    signature = request.headers.get("X-Line-Signature", "")
+    body = request.get_data(as_text=True)
+    try:
+        handler.handle(body, signature)
+    except InvalidSignatureError:
+        abort(400)
+
+    return "OK"
+
+
+@app.route("/")
 def index():
     return "✅ LINE Qian Bot is running! POST to /callback to interact."
+
 
 
     # 處理真正的 LINE Webhook 請求（POST）
