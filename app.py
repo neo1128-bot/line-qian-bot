@@ -49,6 +49,11 @@ def load_data():
 
 
 @app.route("/callback", methods=["POST"])
+
+@app.route("/")
+def index():
+    return "✅ LINE Qian Bot is running! POST to /callback to interact."
+
 def callback():
     print(f"Request body: {123}")
     signature = request.headers.get("X-Line-Signature", "")
