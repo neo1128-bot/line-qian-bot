@@ -1,0 +1,3 @@
+@app.route("/")
+def index():
+    return "👋 Hello, this is the LINE Qian Bot API. Try POSTing to /callback."
