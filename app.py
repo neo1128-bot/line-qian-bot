@@ -52,6 +52,11 @@ def callback():
     if request.method == "GET":
         return "👋 Hello from LINE bot webhook."
 
+    @app.route("/")
+def index():
+    return "✅ LINE Qian Bot is running! POST to /callback to interact."
+
+
     # 處理真正的 LINE Webhook 請求（POST）
     signature = request.headers.get("X-Line-Signature", "")
     body = request.get_data(as_text=True)
