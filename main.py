@@ -9,8 +9,8 @@ import os
 app = Flask(__name__)
 
 # 用你自己的 Channel access token 和 secret 替换下方字串
-LINE_CHANNEL_ACCESS_TOKEN = "你的CHANNEL_ACCESS_TOKEN"
-LINE_CHANNEL_SECRET = "你的CHANNEL_SECRET"
+LINE_CHANNEL_ACCESS_TOKEN = os.getenv("LINE_CHANNEL_ACCESS_TOKEN")
+LINE_CHANNEL_SECRET = os.getenv("LINE_CHANNEL_SECRET")
 
 configuration = Configuration(access_token=LINE_CHANNEL_ACCESS_TOKEN)
 line_bot_api = MessagingApi(configuration)
