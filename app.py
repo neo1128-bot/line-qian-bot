@@ -92,7 +92,6 @@ def index():
 
 
 @handler.add(MessageEvent)
-load_data()
 def handle_message(event):
     if isinstance(event.message, TextMessage):
         user_msg = event.message.text
