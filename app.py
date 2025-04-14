@@ -64,16 +64,6 @@ def callback():
 
 
 @app.route("/callback", methods=["GET", "POST"])
-def callback():
-    ...
-    # 🔴 多餘的重複 webhook 處理程式碼
-    signature = request.headers.get("X-Line-Signature", "")
-    body = request.get_data(as_text=True)
-    try:
-        handler.handle(body, signature)
-    except InvalidSignatureError:
-        abort(400)
-    return "OK"
 def index():
     return "✅ LINE Qian Bot is running! POST to /callback to interact."
 
